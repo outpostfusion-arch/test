@@ -61,10 +61,10 @@
     <circle id="highlight2" cx="0" cy="0" r="2"   fill="rgba(255,255,255,0.5)"/>
   </g>
 
-  <!-- eyelid top -->
-  <path id="lidTop" d="M -95,0 Q 0,-90 95,0" fill="#1a0a05" stroke="#0a0503" stroke-width="1"/>
-  <!-- eyelid bottom -->
-  <path id="lidBot" d="M -95,0 Q 0,70 95,0"  fill="#1a0a05" stroke="#0a0503" stroke-width="1"/>
+  <!-- eyelid top (closed shape extending to top of viewBox) -->
+  <path id="lidTop" d="M -95,0 Q 0,-90 95,0 L 100,-50 L -100,-50 Z" fill="#1a0a05" stroke="none"/>
+  <!-- eyelid bottom (closed shape extending to bottom of viewBox) -->
+  <path id="lidBot" d="M -95,0 Q 0,70 95,0 L 100,50 L -100,50 Z"    fill="#1a0a05" stroke="none"/>
 
   <!-- outline -->
   <ellipse cx="0" cy="0" rx="95" ry="42" fill="none" stroke="#0a0503" stroke-width="2.5"/>
@@ -165,8 +165,8 @@ function updateLids(progress) {
   const botRise  = progress * 38;
   const topCtrl  = -90 + topDrop * 2.1;
   const botCtrl  =  70 - botRise * 1.8;
-  lidTop.setAttribute('d', `M -95,0 Q 0,${topCtrl} 95,0`);
-  lidBot.setAttribute('d', `M -95,0 Q 0,${botCtrl} 95,0`);
+  lidTop.setAttribute('d', `M -95,0 Q 0,${topCtrl} 95,0 L 100,-50 L -100,-50 Z`);
+  lidBot.setAttribute('d', `M -95,0 Q 0,${botCtrl} 95,0 L 100,50 L -100,50 Z`);
 }
 
 function loop() {
